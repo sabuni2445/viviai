@@ -23,6 +23,11 @@ import {
   Sun,
   Moon,
   Clock,
+  BookOpen,
+  ImageIcon,
+  Mic,
+  ChevronDown,
+  ChevronLeft,
   Search,
   MoreVertical,
   User,
@@ -39,18 +44,45 @@ import { Language, translations } from '@/lib/translations';
 
 // Sample Data for AI Videos Section
 const sampleVideos = [
-  { id: 1, title: 'Steaming Artisan Coffee', desc: 'Cafe & Bakery', category: 'food', thumb: '/images/food.png', views: '1.2k', heart: 124 },
-  { id: 2, title: 'Luxury Steakhouse', desc: 'Fine Dining', category: 'restaurants', thumb: '/images/restaurant.png', views: '840', heart: 98 },
-  { id: 3, title: 'Cyberpunk Fashion', desc: 'Modern Collection', category: 'fashion', thumb: '/images/fashion.png', views: '3.1k', heart: 420 },
-  { id: 4, title: 'Intense Workout', desc: 'Health & Wellness', category: 'fitness', thumb: '/images/fitness.png', views: '2.4k', heart: 315 },
-  { id: 5, title: 'Modern Glass Estate', desc: 'Luxury Residential', category: 'realEstate', thumb: '/images/real_estate.png', views: '1.8k', heart: 210 },
-  { id: 6, title: 'Gourmet Burger Flip', desc: 'Quick Service', category: 'food', thumb: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800', views: '1.5k', heart: 180 },
+  { id: 1, title: 'Gateau Bakery 1', desc: 'Cinematic Bakery', thumb: '/videos/firefly_1.mp4', aspect: 'aspect-[4/5]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 2, title: 'Gateau Bakery 2', desc: 'Soft Gold lighting', thumb: '/videos/firefly_2.mp4', aspect: 'aspect-[4/3]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 3, title: 'Birthday Celebration', desc: 'Emotional Happy', thumb: '/videos/firefly_3.mp4', aspect: 'aspect-[16/9]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 4, title: 'Street Food', desc: 'Sizzling Grill', thumb: '/videos/firefly_4.mp4', aspect: 'aspect-[1/2]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 5, title: 'Restaurant Burgers', desc: 'Juicy Meals', thumb: '/videos/firefly_5.mp4', aspect: 'aspect-[1/1]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 6, title: 'White Studio', desc: 'Elegant Outfit', thumb: '/videos/firefly_6.mp4', aspect: 'aspect-[4/5]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 7, title: 'Juicy Burger', desc: 'Melted Cheese', thumb: '/videos/firefly_7.mp4', aspect: 'aspect-[4/3]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 8, title: 'Cozy Morning', desc: 'Fresh Croissants', thumb: '/videos/firefly_8.mp4', aspect: 'aspect-[16/9]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 9, title: 'Animated Bear 1', desc: 'Sweets Box', thumb: '/videos/firefly_9.mp4', aspect: 'aspect-[1/2]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 10, title: 'Animated Bear 2', desc: 'Reacting Happily', thumb: '/videos/firefly_10.mp4', aspect: 'aspect-[1/1]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 11, title: 'Elegant Interior', desc: 'Plated Dish', thumb: '/videos/firefly_11.mp4', aspect: 'aspect-[4/5]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 12, title: 'Fashion Shoot', desc: 'Confident Walk', thumb: '/videos/firefly_12.mp4', aspect: 'aspect-[4/3]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 13, title: 'Luxury Apartment', desc: 'Sunlight Windows', thumb: '/videos/firefly_13.mp4', aspect: 'aspect-[16/9]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 14, title: 'Rustic Bakery', desc: 'Kneading Dough', thumb: '/videos/firefly_14.mp4', aspect: 'aspect-[1/2]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 15, title: 'Morning Commercial', desc: '4K Sequence', thumb: '/videos/firefly_15.mp4', aspect: 'aspect-[1/1]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 16, title: 'Bakery Seq 1', desc: 'Ultra Cinematic', thumb: '/videos/firefly_16.mp4', aspect: 'aspect-[4/5]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 17, title: 'Bakery Seq 2', desc: 'Luxury Sequence', thumb: '/videos/firefly_17.mp4', aspect: 'aspect-[4/3]', badge: { type: 'icon', color: 'bg-white text-black' } },
+  { id: 18, title: 'Realistic Closeup', desc: 'Exquisite Details', thumb: '/videos/firefly_18.mp4', aspect: 'aspect-[16/9]', badge: { type: 'google', color: 'bg-white' } },
+  { id: 19, title: 'Vibrant Dessert', desc: 'Macarons Display', thumb: '/videos/firefly_19.mp4', aspect: 'aspect-[1/2]', badge: { type: 'text', text: 'Fi', color: 'bg-[#FF1A1A] text-white' } },
+  { id: 20, title: 'Bonus Commercial', desc: 'Creative Shot', thumb: '/videos/firefly_20.mp4', aspect: 'aspect-[1/1]', badge: { type: 'icon', color: 'bg-white text-black' } }
 ];
 
 const dashboardStats = [
   { label: 'Total Videos', value: '24', icon: <Video className="w-4 h-4" />, change: '+12%' },
   { label: 'Time Saved', value: '180h', icon: <Clock3 className="w-4 h-4" />, change: '+45%' },
   { label: 'Avg Engagement', value: '8.4%', icon: <TrendingUp className="w-4 h-4" />, change: '+2.1%' },
+];
+
+const suiteTools = [
+  { id: 'text-video', title: 'Text to Video', desc: 'Generate videos from text prompts', icon: '/videos/firefly_1.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'frame-video', title: 'Frame to Video', desc: 'Generate videos from images', icon: '/videos/firefly_2.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'motion-sync', title: 'Motion Sync', desc: 'Motion sync videos from image and motion...', icon: '/videos/firefly_3.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'lip-sync', title: 'Lip-Sync', desc: 'Lip-sync videos from audio and image', icon: '/videos/firefly_4.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'edit-video', title: 'Edit Video', desc: 'Modify or retake videos (Kling 01, LTX...)', icon: '/videos/firefly_5.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'create-image', title: 'Create Image', desc: 'Generate images from text prompts', icon: '/videos/firefly_6.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'edit-image', title: 'Edit Image', desc: 'Edit images with AI models', icon: '/videos/firefly_7.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'image-upscale', title: 'Image Upscale', desc: 'Upscale and enhance image quality', icon: '/videos/firefly_8.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'camera-angle', title: 'Camera Angle Contr...', desc: 'Control the camera angle of the image', icon: '/videos/firefly_9.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
+  { id: 'create-voice', title: 'Create voice-over', desc: 'Generate natural sounding voiceovers fro...', icon: '/videos/firefly_10.mp4', bg: 'bg-[#111111]', titleColor: 'text-green-400' },
 ];
 
 export default function Home() {
@@ -151,9 +183,16 @@ export default function Home() {
 
   if (view === 'landing') {
     return (
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white relative overflow-hidden">
-        {/* Ambient Landing Background */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[800px] bg-primary-glow rounded-full blur-[120px] -z-10 pointer-events-none opacity-50 animate-mesh" />
+      <div className="min-h-screen text-foreground font-sans selection:bg-primary selection:text-white relative overflow-hidden bg-[#020202]">
+        {/* Antigravity Deep Void Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#020202]">
+          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#3d1872]/50 blur-[130px] rounded-full mix-blend-screen opacity-80" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#1a2f6b]/40 blur-[140px] rounded-full mix-blend-screen opacity-70" />
+          <div className="absolute top-[30%] left-[60%] w-[30%] h-[30%] bg-indigo-500/20 blur-[120px] rounded-full mix-blend-screen opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_85%)] z-0" />
+          <div className="absolute inset-0 opacity-[0.03] z-0" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+          <div className="floating-particles opacity-30 z-0" />
+        </div>
 
         {/* Top Navbar */}
         <nav className="absolute top-0 left-0 w-full z-50">
@@ -220,24 +259,36 @@ export default function Home() {
               </button>
             </div>
           </motion.div>
+        </section>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mt-24 relative aspect-video rounded-[40px] overflow-hidden border border-border shadow-[0_40px_100px_-20px_var(--primary-glow)] group cursor-pointer"
-          >
-            <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
-              <div className="w-24 h-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-2xl">
-                <Play className="w-10 h-10 text-white fill-current ml-2" />
+        {/* Perspective Video Strip */}
+        <section className="py-20 bg-[#080808] overflow-hidden relative">
+           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background z-20 pointer-events-none"/>
+           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none"/>
+           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none"/>
+           
+           <div className="w-full ml-[10vw]" style={{ perspective: '1600px' }}>
+              <div className="flex flex-col gap-3 scale-110 shadow-2xl" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(30deg) rotateZ(-4deg)' }}>
+                 {/* Row Strip 1 */}
+                 <div className="flex gap-3 w-max -ml-40 blur-[2px] opacity-60">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
+                       <video key={i} src={`/videos/firefly_${i}.mp4`} className="w-[340px] h-[190px] object-cover rounded-[20px] shadow-2xl" autoPlay muted loop playsInline />
+                    ))}
+                 </div>
+                 {/* Row Strip 2 (Dominant) */}
+                 <div className="flex gap-3 w-max -ml-10 z-10 drop-shadow-[0_0_80px_rgba(0,0,0,0.8)]">
+                    {[9, 10, 11, 12, 13, 14, 15, 16].map(i => (
+                       <video key={`r2-${i}`} src={`/videos/firefly_${i}.mp4`} className="w-[380px] h-[220px] object-cover rounded-[20px] shadow-2xl brightness-110" autoPlay muted loop playsInline />
+                    ))}
+                 </div>
+                 {/* Row Strip 3 */}
+                 <div className="flex gap-3 w-max ml-10 blur-[2px] opacity-60">
+                    {[17, 18, 19, 20, 1, 2, 3, 4].map(i => (
+                       <video key={`r3-${i}`} src={`/videos/firefly_${i}.mp4`} className="w-[340px] h-[190px] object-cover rounded-[20px] shadow-2xl" autoPlay muted loop playsInline />
+                    ))}
+                 </div>
               </div>
-            </div>
-            <img 
-              src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=2000" 
-              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-              alt="Medeo Style Interface preview"
-            />
-          </motion.div>
+           </div>
         </section>
 
         {/* Value Props Section */}
@@ -324,7 +375,9 @@ export default function Home() {
       
       {/* Dynamic Background Mesh */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="mesh-decorator animate-mesh" />
+        <div className="mesh-decorator" />
+        <div className="floating-particles" />
+        <div className="cinematic-vignette" />
       </div>
 
       {/* Sidebar */}
@@ -421,64 +474,71 @@ export default function Home() {
                  exit="hidden"
                  className="space-y-12"
                >
-                 {/* Header & Stats */}
-                 <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-end">
-                   <div className="xl:col-span-7 space-y-2">
-                     <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">{lang === 'am' ? 'መልካም ቀን' : 'Hello Expert,'}</h1>
-                     <p className="text-xl text-muted font-medium">{lang === 'am' ? 'ለንግድዎ ምርጥ ቪዲዮዎችን ዛሬ ይፍጠሩ' : 'Your video production is running at optimal capacity.'}</p>
-                   </div>
-                   <div className="xl:col-span-5 grid grid-cols-3 gap-4">
-                      {dashboardStats.map((stat, i) => (
-                        <div key={i} className="high-end-card p-4 space-y-1">
-                          <div className="flex items-center justify-between">
-                            <div className="p-1.5 rounded-lg bg-primary/10 text-primary">{stat.icon}</div>
-                            <span className="text-[10px] font-bold text-green-500 bg-green-500/10 px-1.5 py-0.5 rounded-full">{stat.change}</span>
-                          </div>
-                          <p className="text-xl font-extrabold">{stat.value}</p>
-                          <p className="text-[10px] uppercase tracking-wider font-bold text-muted">{stat.label}</p>
+                  {/* Navigation Pill */}
+                  <div className="flex justify-center mb-8">
+                    <div className="flex items-center bg-[#18181A] rounded-full px-8 py-3 gap-10 text-sm font-bold text-white shadow-xl border border-white/5">
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><BookOpen className="w-4 h-4"/> Story <ChevronDown className="w-3 h-3 text-muted"/></div>
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><Video className="w-4 h-4"/> Video <ChevronDown className="w-3 h-3 text-muted"/></div>
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><ImageIcon className="w-4 h-4"/> Image <ChevronDown className="w-3 h-3 text-muted"/></div>
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><User className="w-4 h-4"/> Character <ChevronDown className="w-3 h-3 text-muted"/></div>
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><Globe className="w-4 h-4"/> World <span className="text-[9px] bg-green-500 text-black px-1.5 py-0.5 rounded font-extrabold -ml-1">NEW</span> <ChevronDown className="w-3 h-3 text-muted"/></div>
+                       <div className="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors"><Mic className="w-4 h-4"/> Audio <ChevronDown className="w-3 h-3 text-muted"/></div>
+                    </div>
+                  </div>
+                  
+                  {/* Hero Feature Banners */}
+                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-16">
+                     <div className="lg:col-span-2 relative group rounded-[16px] overflow-hidden aspect-[21/9] lg:aspect-auto h-full min-h-[220px] cursor-pointer" onClick={() => {setActiveTab('create'); setStep('forming');}}>
+                        <video src="/videos/firefly_11.mp4" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" autoPlay muted loop playsInline />
+                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
+                        <div className="absolute bottom-6 left-6 z-10 space-y-3">
+                           <h3 className="text-white text-2xl font-extrabold tracking-tight">Seedance 2.0</h3>
+                           <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[11px] font-bold border border-white/20 transition-colors">Create Video</button>
                         </div>
-                      ))}
-                   </div>
-                 </div>
+                     </div>
+                     <div className="relative group rounded-[16px] overflow-hidden aspect-[4/3] lg:aspect-auto h-full min-h-[220px] cursor-pointer" onClick={() => {setActiveTab('create'); setStep('forming');}}>
+                        <video src="/videos/firefly_12.mp4" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" autoPlay muted loop playsInline />
+                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
+                        <div className="absolute bottom-6 left-6 z-10 space-y-3">
+                           <h3 className="text-white text-lg font-extrabold tracking-tight">Create Your Own AI World</h3>
+                           <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[11px] font-bold border border-white/20 transition-colors">Create 3D World</button>
+                        </div>
+                     </div>
+                     <div className="relative group rounded-[16px] overflow-hidden aspect-[4/3] lg:aspect-auto h-full min-h-[220px] cursor-pointer" onClick={() => {setActiveTab('create'); setStep('forming');}}>
+                        <video src="/videos/firefly_13.mp4" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" autoPlay muted loop playsInline />
+                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
+                        <div className="absolute bottom-6 left-6 z-10 space-y-3">
+                           <h3 className="text-white text-lg font-extrabold leading-tight tracking-tight">AI Personality of the<br/>Year Awards</h3>
+                           <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[11px] font-bold border border-white/20 transition-colors">Create. Post. Win $20K</button>
+                        </div>
+                     </div>
+                  </div>
 
-                 {/* Creation Hub */}
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-                   <motion.div 
-                     whileHover={{ scale: 1.01 }}
-                     whileTap={{ scale: 0.99 }}
-                     onClick={() => {setActiveTab('create'); setStep('forming'); setMode('guided');}}
-                     className="high-end-card p-10 flex flex-col items-start gap-6 cursor-pointer relative overflow-hidden group bg-card"
-                   >
-                      <div className="w-16 h-16 rounded-[24px] bg-primary flex items-center justify-center text-white vivid-glow group-hover:scale-110 transition-transform">
-                        <Zap className="w-8 h-8 fill-current" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-2xl font-bold">{T.form.mode1}</h3>
-                        <p className="text-muted leading-relaxed font-medium">The AI smart-form logic allows for instant business branding with high conversion rates.</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-primary font-bold text-sm mt-auto">
-                        Start Building <ChevronRight className="w-4 h-4" />
-                      </div>
-                   </motion.div>
+                  {/* Suite Tools Layout */}
+                  <div className="mb-20">
+                     <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-2xl font-extrabold text-white tracking-tight">OpenArt Suite</h2>
+                        <button className="text-muted text-sm font-bold hover:text-white transition-colors flex items-center gap-1.5">More <ArrowRight className="w-3.5 h-3.5" /></button>
+                     </div>
+                     <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        {suiteTools.map(tool => (
+                           <div key={tool.id} onClick={() => {setActiveTab('create'); setStep('forming'); setMode('guided');}} className={`group relative ${tool.bg} hover:bg-[#1A1A1A] border border-white/5 hover:border-green-500/30 rounded-[20px] p-4 flex justify-between cursor-pointer transition-colors duration-300 h-28`}>
+                              <div className="flex flex-col gap-1 w-[55%]">
+                                 <h4 className={`text-[13px] font-extrabold tracking-tight ${tool.titleColor}`}>{tool.title}</h4>
+                                 <p className="text-[10px] text-muted font-medium leading-normal line-clamp-3 pr-2">{tool.desc}</p>
+                              </div>
+                              <div className="w-[84px] h-[84px] rounded-2xl overflow-hidden self-center relative shadow-lg bg-black shrink-0 -mr-1">
+                                  <video src={tool.icon} className="absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline />
+                                  <div className="absolute bottom-1 right-1 rounded border border-white/20 overflow-hidden">
+                                     <div className="bg-black/80 backdrop-blur-md px-1 py-0.5 text-[6px] font-extrabold tracking-widest text-white uppercase transform scale-90 origin-bottom-right">PROMPT</div>
+                                  </div>
+                              </div>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
 
-                   <motion.div 
-                     whileHover={{ scale: 1.01 }}
-                     whileTap={{ scale: 0.99 }}
-                     onClick={() => {setActiveTab('create'); setStep('forming'); setMode('prompt');}}
-                     className="high-end-card p-10 flex flex-col items-start gap-6 cursor-pointer relative overflow-hidden group bg-card"
-                   >
-                      <div className="w-16 h-16 rounded-[24px] bg-orange-500 flex items-center justify-center text-white shadow-xl shadow-orange-500/20 group-hover:scale-110 transition-transform">
-                        <Sparkles className="w-8 h-8" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-2xl font-bold">{T.form.mode2}</h3>
-                        <p className="text-muted leading-relaxed font-medium">Direct neural prompting for cinematic masterpieces and experimental visual storytelling.</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-orange-500 font-bold text-sm mt-auto">
-                        Create with Prompt <ChevronRight className="w-4 h-4" />
-                      </div>
-                   </motion.div>
-                 </div>
+
 
                  {/* Media Archive */}
                  <div className="space-y-8 pt-8">
@@ -496,39 +556,34 @@ export default function Home() {
                         ))}
                      </div>
                    </div>
-                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {filteredVideos.map(v => (
+                   <div className="columns-2 md:columns-4 gap-6 w-full mx-auto pb-10">
+                      {filteredVideos.map((v, i) => (
                         <motion.div 
                           key={v.id} 
                           variants={itemVariants}
-                          className="high-end-card group overflow-hidden border-border"
+                          className={`group relative overflow-hidden bg-black break-inside-avoid w-full mb-6 rounded-3xl shadow-xl border border-white/5 ${v.aspect}`}
                         >
-                           <div className="aspect-video relative overflow-hidden bg-accent">
-                             <img src={v.thumb} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={v.title} />
-                             <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all gap-4">
-                               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-black shadow-2xl scale-50 group-hover:scale-100 transition-all duration-300">
-                                 <Play className="w-6 h-6 fill-current ml-1" />
-                               </div>
-                               <button className="px-6 py-2 rounded-full border border-white/20 text-white text-xs font-bold hover:bg-white hover:text-black transition-all">
-                                 Project Details
-                               </button>
-                             </div>
-                             <div className="absolute bottom-3 left-3 flex gap-2">
-                               <div className="bg-black/50 backdrop-blur-md px-2 py-1 rounded-lg text-[10px] text-white flex items-center gap-1">
-                                 <Eye className="w-2.5 h-2.5" /> {v.views}
-                               </div>
-                               <div className="bg-black/50 backdrop-blur-md px-2 py-1 rounded-lg text-[10px] text-white flex items-center gap-1">
-                                 <Heart className="w-2.5 h-2.5" /> {v.heart}
-                               </div>
-                             </div>
-                           </div>
-                           <div className="p-5 flex items-center justify-between bg-card/80 backdrop-blur-md">
-                              <div className="overflow-hidden">
-                                <h4 className="font-bold truncate text-lg">{v.title}</h4>
-                                <p className="text-xs text-muted font-medium">{v.desc}</p>
-                              </div>
-                              <div className="p-2 rounded-lg hover:bg-accent transition-colors cursor-pointer text-muted hover:text-primary">
-                                <Share2 className="w-4 h-4" />
+                           <video 
+                             src={v.thumb} 
+                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                             muted 
+                             loop 
+                             playsInline 
+                             onMouseEnter={(e) => e.currentTarget.play()}
+                             onMouseLeave={(e) => { e.currentTarget.pause(); }}
+                           />
+                           
+                           {/* Dark dim on hover just for interaction feel */}
+                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none z-10" />
+                           
+                           {/* Isolated Badge overlay matching exact reference style */}
+                           <div className="absolute bottom-4 left-4 z-20">
+                              <div className={`w-9 h-9 rounded-[10px] flex items-center justify-center shadow-lg ${v.badge?.color}`}>
+                                 {v.badge?.type === 'text' && <span className="font-extrabold text-[15px] tracking-tighter leading-none -ml-0.5">{v.badge.text}</span>}
+                                 {v.badge?.type === 'icon' && <div className="w-3.5 h-3.5 bg-black rotate-45 transform" />}
+                                 {v.badge?.type === 'google' && (
+                                   <Globe className="w-5 h-5 text-blue-500" />
+                                 )}
                               </div>
                            </div>
                         </motion.div>
@@ -564,42 +619,42 @@ export default function Home() {
                     {mode === 'guided' ? (
                        <div className="grid grid-cols-2 gap-8">
                           <div className="space-y-3">
-                             <label className="text-[10px] font-bold uppercase text-muted tracking-widest">{T.form.businessName}</label>
-                             <input type="text" value={form.businessName} onChange={(e) => setForm({...form, businessName: e.target.value})} className="w-full bg-accent/50 border border-border/30 rounded-2xl p-4 text-sm font-medium transition-all focus:ring-1 focus:ring-primary focus:bg-accent focus:outline-none" placeholder="e.g. Skyline Media" />
+                             <label className="text-[12px] font-extrabold uppercase text-primary/80 tracking-widest">{T.form.businessName}</label>
+                             <input type="text" value={form.businessName} onChange={(e) => setForm({...form, businessName: e.target.value})} className="w-full high-end-input p-4 text-sm font-bold text-foreground" placeholder="e.g. Skyline Media" />
                           </div>
                           <div className="space-y-3">
-                             <label className="text-[10px] font-bold uppercase text-muted tracking-widest">{T.form.businessType}</label>
-                             <input type="text" value={form.businessType} onChange={(e) => setForm({...form, businessType: e.target.value})} className="w-full bg-accent/50 border border-border/30 rounded-2xl p-4 text-sm font-medium transition-all focus:ring-1 focus:ring-primary focus:bg-accent focus:outline-none" placeholder="e.g. Creative Agency" />
+                             <label className="text-[12px] font-extrabold uppercase text-primary/80 tracking-widest">{T.form.businessType}</label>
+                             <input type="text" value={form.businessType} onChange={(e) => setForm({...form, businessType: e.target.value})} className="w-full high-end-input p-4 text-sm font-bold text-foreground" placeholder="e.g. Creative Agency" />
                           </div>
                           <div className="space-y-3">
-                             <label className="text-[10px] font-bold uppercase text-muted tracking-widest">{T.form.product}</label>
-                             <input type="text" value={form.product} onChange={(e) => setForm({...form, product: e.target.value})} className="w-full bg-accent/50 border border-border/30 rounded-2xl p-4 text-sm font-medium transition-all focus:ring-1 focus:ring-primary focus:bg-accent focus:outline-none" placeholder="e.g. Virtual Showroom" />
+                             <label className="text-[12px] font-extrabold uppercase text-primary/80 tracking-widest">{T.form.product}</label>
+                             <input type="text" value={form.product} onChange={(e) => setForm({...form, product: e.target.value})} className="w-full high-end-input p-4 text-sm font-bold text-foreground" placeholder="e.g. Virtual Showroom" />
                           </div>
                           <div className="space-y-3">
-                             <label className="text-[10px] font-bold uppercase text-muted tracking-widest">{T.form.style}</label>
-                             <select value={form.style} onChange={(e) => setForm({...form, style: e.target.value})} className="w-full bg-accent/50 border border-border/30 rounded-2xl p-4 text-sm font-medium transition-all focus:ring-1 focus:ring-primary focus:bg-accent focus:outline-none appearance-none">
+                             <label className="text-[12px] font-extrabold uppercase text-primary/80 tracking-widest">{T.form.style}</label>
+                             <select value={form.style} onChange={(e) => setForm({...form, style: e.target.value})} className="w-full high-end-input p-4 text-sm font-bold text-foreground appearance-none">
                                {T.styles.map(s => <option key={s} value={s}>{s}</option>)}
                              </select>
                           </div>
                        </div>
                     ) : (
                       <div className="space-y-3">
-                        <label className="text-[10px] font-bold uppercase text-muted tracking-widest">{T.form.promptLabel}</label>
+                        <label className="text-[12px] font-extrabold uppercase text-primary/80 tracking-widest">{T.form.promptLabel}</label>
                         <textarea 
                           value={originalPrompt} 
                           onChange={(e) => setOriginalPrompt(e.target.value)}
-                          className="w-full bg-accent/50 border border-border/30 rounded-3xl p-8 text-lg font-medium min-h-[250px] transition-all focus:ring-1 focus:ring-primary focus:bg-accent focus:outline-none resize-none"
-                          placeholder={T.form.promptPlaceholder}
+                          className="w-full high-end-input p-8 text-xl font-bold min-h-[250px] resize-none"
+                          placeholder={T.form.promptPlaceholder || 'Describe your idea...'}
                         />
                       </div>
                     )}
 
                     <button 
                       onClick={handleFormSubmit} 
-                      className="w-full primary-btn py-5 rounded-2xl font-bold text-xl flex items-center justify-center gap-4 vivid-glow"
+                      className="w-full primary-btn py-5 rounded-2xl font-extrabold text-2xl flex items-center justify-center gap-4 vivid-glow"
                       disabled={mode === 'prompt' ? !originalPrompt : !form.businessName}
                     >
-                       <Zap className="w-6 h-6 fill-current" /> {T.ctaGenerate}
+                       <Zap className="w-8 h-8 fill-current" /> {T.ctaGenerate || 'Generate Cinematic Video'}
                     </button>
                   </div>
                 </motion.div>
@@ -609,40 +664,55 @@ export default function Home() {
              {step === 'loading' && (
                <motion.div 
                  key="loading"
-                 className="h-full flex flex-col items-center justify-center space-y-12"
+                 className="h-full flex flex-col items-center justify-center space-y-16 absolute inset-0 z-50 bg-black/80 backdrop-blur-3xl rounded-[32px] overflow-hidden"
                >
-                 <div className="w-40 h-40 relative group">
-                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse" />
-                    <svg className="w-full h-full overflow-visible">
+                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.15),transparent_70%)] pointer-events-none" />
+                 <div className="w-48 h-48 relative group z-10">
+                    <div className="absolute inset-0 bg-primary/30 rounded-full blur-3xl animate-pulse" />
+                    <svg className="w-full h-full overflow-visible drop-shadow-[0_0_20px_rgba(139,92,246,0.6)]">
                       <motion.circle 
-                         cx="80" cy="80" r="70" 
+                         cx="96" cy="96" r="86" 
+                         stroke="rgba(255,255,255,0.05)" strokeWidth="2" fill="none"
+                      />
+                      <motion.circle 
+                         cx="96" cy="96" r="86" 
                          stroke="var(--primary)" strokeWidth="6" fill="none"
-                         strokeDasharray="440"
-                         initial={{ strokeDashoffset: 440 }}
-                         animate={{ strokeDashoffset: 440 - (progressStep + 1) * 110 }}
+                         strokeDasharray="540"
+                         initial={{ strokeDashoffset: 540 }}
+                         animate={{ strokeDashoffset: 540 - (progressStep + 1) * 135 }}
                          strokeLinecap="round"
-                         className="transition-all duration-1000 ease-out"
+                         className="transition-all duration-[2.5s] ease-in-out"
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                       <Zap className="w-12 h-12 text-primary animate-bounce" />
+                       <Sparkles className="w-16 h-16 text-white animate-pulse drop-shadow-[0_0_15px_var(--primary-glow)]" />
                     </div>
                  </div>
-                 <div className="text-center space-y-4 max-w-sm">
-                    <h2 className="text-3xl font-extrabold tracking-tight">{loadingMessages[progressStep]}</h2>
-                    <p className="text-muted font-medium italic opacity-60 leading-relaxed">Scaling neural parameters to achieve investor-grade cinematic output...</p>
+                 <div className="text-center space-y-4 max-w-lg relative z-10">
+                    <AnimatePresence mode="popLayout">
+                      <motion.h2 
+                        key={progressStep}
+                        initial={{ opacity: 0, y: 15, filter: 'blur(10px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, y: -15, filter: 'blur(10px)' }}
+                        className="text-4xl font-extrabold tracking-tight text-white drop-shadow-2xl"
+                      >
+                        {loadingMessages[progressStep]}
+                      </motion.h2>
+                    </AnimatePresence>
+                    <p className="text-primary font-bold italic tracking-wide">Rendering cinematic visuals...</p>
                  </div>
                </motion.div>
              )}
 
-             {/* FINAL: Professional Studio Output */}
              {step === 'result' && (
                <motion.div 
                  key="result"
-                 initial={{ opacity: 0, scale: 0.98 }}
+                 initial={{ opacity: 0, scale: 0.95 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="h-full grid grid-cols-1 lg:grid-cols-12 gap-8"
+                 className="h-full grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10"
                >
+                 <div className="absolute -inset-8 bg-black/40 pointer-events-none -z-10 rounded-[40px] backdrop-blur-md shadow-2xl" />
                  <div className="lg:col-span-8 space-y-8">
                     <div className="aspect-video bg-black rounded-[32px] overflow-hidden border border-border shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] relative group cursor-pointer">
                        <video src="https://videos.pexels.com/video-files/3209211/3209211-uhd_2560_1440_25fps.mp4" controls autoPlay loop className="w-full h-full object-cover" />
